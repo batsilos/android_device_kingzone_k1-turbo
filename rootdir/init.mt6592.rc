@@ -120,7 +120,8 @@ on init
     chown system camera /dev/DW9718AF
     chown system camera /dev/OV8825AF
     chown system camera /dev/CAM_CAL_DRV
-
+    chown system system /sys/bus/platform/drivers/kd_camera_flashlight/lighton
+    
     chown system system /dev/RT_Monitor
     chmod 0600 /dev/RT_Monitor
 
@@ -165,6 +166,27 @@ on init
     chown system /sys/class/misc/m_mag_misc/magdelay
     chown system /sys/class/misc/m_mag_misc/magoactive
     chown system /sys/class/misc/m_mag_misc/magodelay
+    
+# Vanzo:yangzhihong on: Wed, 23 Apr 2014 17:05:37 +0800
+    #TP
+    chmod 0777 /sys/devices/platform/mt-i2c.0/i2c-0/0-0038/highsensitivity
+	chmod 0777 /sys/devices/platform/mt-i2c.0/i2c-0/0-0038/3dvstaropen
+	chmod 0777 /dev/tp_3dvstar
+	chmod 0777 /sys/devices/platform/mt-i2c.0/i2c-0/0-0038/glove
+        chmod 0777 /sys/class/syna/glove
+	#wp1005
+	chmod 0777 /dev/wp1004
+	#fuelgauge
+	chmod 0777 /sys/bus/platform/drivers/bq27520/bq27520_upgrade
+	chmod 0777 /sys/bus/platform/drivers/bq27520/bq27520_auto_upgrade
+	chmod 0777 /sys/bus/platform/drivers/bq27520/bq27520_upgrade_status
+	chmod 0777 /sys/bus/platform/drivers/bq27520/bq27520_capacity
+	chmod 0777 /sys/bus/platform/drivers/bq27520/bq27520_control
+	chmod 0777 /sys/bus/platform/drivers/bq27520/bq27520_version
+	#breathlight
+	chmod 0777 /sys/class/breathlightdrv/breathlight/open
+	chmod 0777 /sys/class/breathlightdrv/breathlight/rgb
+# End of Vanzo:yangzhihong
 
     # Charge
     chmod 0666 /dev/MT_pmic_adc_cali
@@ -485,7 +507,8 @@ service memsicd3416x /system/bin/memsicd3416x
 	 user system
     group system
     class main
-
+    oneshot
+    
 service akmd8975 /system/bin/akmd8975
     disabled
     user system
@@ -527,7 +550,15 @@ service qmc5983d /system/bin/qmc5983d
 	 user system
     group system
     class main
-
+    oneshot
+    
+service qmc6983d /system/bin/qmc6983d
+	disabled
+	user system
+	group system
+	class main
+	oneshot
+	
 service orientationd /system/bin/orientationd
     disabled
     user system
