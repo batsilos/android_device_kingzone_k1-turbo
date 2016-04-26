@@ -20,7 +20,7 @@
         
         # source build/envsetup.sh
         
-        # brunch cm_k1_turbo-userdebug
+        # brunch cm_g4s-userdebug
 
 # MTK
 
