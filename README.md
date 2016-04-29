@@ -14,13 +14,13 @@
 
 * Compilation
 
-        # repo init -u git://github.com/fire855/android.git -b cm-12.1
+        # repo init -u git://github.com/batsilos/android.git -b cm-13.0
         
         # repo sync
         
         # source build/envsetup.sh
         
-        # brunch cm_g4s-userdebug
+        # brunch cm_g4s-userdebug -jx (x=number of cpu +1)
 
 # MTK
 
